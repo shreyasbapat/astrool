@@ -17,7 +17,7 @@ test_place = place
 ra_req = eval(input("Enter the ra:  "))
 dec_req = eval(input("Enter the dec:  "))
 m45 = ephem.FixedBody()
-m45.name = "M 45"Choose_Item = eval(input("Select your item:  "))
+m45.name = "M 45"
 #m45._ra = '3:47:24.0'
 #m45._dec = '24:7:0.0'
 m45._ra = ra_req
