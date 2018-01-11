@@ -28,8 +28,8 @@ m45._dec = dec_req
 test_place.date = ephem.now()
 m45.compute(test_place)
 # print (m45.name)
-print (degrees(m45.alt)) 
-print (degrees(m45.az)) 
+print ("Resultant Altitude: "degrees(m45.alt)) 
+print ("Resultant Azimuth: "degrees(m45.az)) 
 
 # print (jupiter.name)
 # print (degrees(jupiter.alt)) 
