@@ -14,8 +14,8 @@ place.date = datetime.now().date().strftime('%Y/%m/%d')
 
 test_place = place
 
-ra_req = eval(input("Enter the ra:  "))
-dec_req = eval(input("Enter the dec:  "))
+ra_req = input("Enter the ra:  ")
+dec_req = input("Enter the dec:  ")
 m45 = ephem.FixedBody()
 m45.name = "M 45"
 #m45._ra = '3:47:24.0'
