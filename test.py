@@ -92,7 +92,7 @@ val1 = degrees(obj.alt)
 val2 = degrees(obj.az)
 # print (m45.name)
 if val1 < degrees(0) : print("The Object is below the Horizon")
-if val1 < degrees(10) : print("The Object is beyond visiblity from your location")
+if val1 < 10 : print("The Object is beyond visiblity from your location")
 print ("Resultant Altitude: " + str(val1)) 
 print ("Resultant Azimuth: " + str(val2)) 
 
