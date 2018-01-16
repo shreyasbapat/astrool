@@ -63,34 +63,61 @@ objects.append(ephem.Saturn())
 objects.append(ephem.Mars())
 objects.append(ephem.Moon())
 objects.append(ephem.Jupiter())
+objects.append(ephem.Uranus())
+objects.append(ephem.Neptune())
+objects.append(ephem.Mercury())
+objects.append(ephem.Venus())
 objects = objects + other_objects
 
 obj_req = input("Enter the name of object: ")
 
 obj = ephem.FixedBody()
 
-
+planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
 for o in objects:
-	if o.name == obj_req:
+	o.compute(place.date)
+	if o.name == "Saturn" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Mars" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Moon" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Jupiter" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Uranus" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Neptune" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Mercury" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == "Venus" == obj_req :
+		obj.name = o.name
+		obj._ra = o.ra
+		obj._dec=o.dec
+	elif o.name == obj_req:
 		obj.name = o.name
 		obj._ra = o._ra
 		obj._dec = o._dec
-# ra_req = input("Enter the ra:  ")
-# dec_req = input("Enter the dec:  ")
-
-#m45._ra = '3:47:24.0'
-#m45._dec = '24:7:0.0'
-# obj._ra = ra_req
-# obj._dec = dec_req
-
-# jupiter = ephem.Jupiter()
-# jupiter.compute(test_place)
 
 test_place.date = ephem.now()
 obj.compute(test_place)
 val1 = degrees(obj.alt)
 val2 = degrees(obj.az)
-# print (m45.name)
+
 if val1 < degrees(0) : print("The Object is below the Horizon")
 if val1 < 10 : print("The Object is beyond visiblity from your location")
 print ("Resultant Altitude: " + str(val1)) 
