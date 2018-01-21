@@ -74,40 +74,15 @@ obj_req = input("Enter the name of object: ")
 obj = ephem.FixedBody()
 
 planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
+x = iter(planets)
 for o in objects:
 	o.compute(place.date)
-	if o.name == "Saturn" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Mars" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Moon" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Jupiter" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Uranus" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Neptune" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Mercury" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
-	elif o.name == "Venus" == obj_req :
-		obj.name = o.name
-		obj._ra = o.ra
-		obj._dec=o.dec
+	if o.name in planets :
+		for x in planets:
+			if o.name == x == obj_req :
+				obj.name = o.name
+				obj._ra = o.ra
+				obj._dec = o.dec
 	elif o.name == obj_req:
 		obj.name = o.name
 		obj._ra = o._ra
