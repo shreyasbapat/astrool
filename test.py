@@ -6,7 +6,7 @@ place = ephem.Observer()
 place.lat = '31.7754'
 place.lon = '76.9861'
 place.elevation = 1000
-place.date = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+place.date = datetime.now().strftime('%Y/%m/%d')
 
 #print (place.date)
 #print (datetime.now().date().strftime('%Y/%m/%d'))
@@ -25,7 +25,7 @@ objects = []
 for s in objects_string:
     objects.append(ephem.star(s))
 
-#["Ruchbah" "Alpheratz", "Cursa", , "RNGC 1980", "M 42"]
+
 ruchbah = ephem.FixedBody()
 ruchbah.name = "Ruchbah"
 ruchbah._ra = '0:56:42.0'
@@ -56,7 +56,7 @@ m45 = ephem.FixedBody()
 m45.name = "M 45"
 m45._ra = '3:47:24.0'
 m45._dec = '24:7:0.0'
-# other_objects = [ruchbah, alpheratz]
+
 other_objects = [ruchbah, alpheratz,  cursa, rngc1980, m42, m45]
 
 objects.append(ephem.Saturn())
@@ -87,26 +87,23 @@ for o in objects:
 				obj.name = o.name
 				obj._ra = o.ra
 				obj._dec = o.dec
-				#obj._mag= o.mag
+			
 	elif o.name == obj_req:
 		obj.name = o.name
 		obj._ra = o._ra
 		obj._dec = o._dec
-		#obj._mag= o.mag
+		
 
 test_place.date = ephem.now()
 obj.compute(test_place)
 val1 = degrees(obj.alt)
 val2 = degrees(obj.az)
-val3 = obj.mag
 
 #Checking the status of the object, if it below or above the Horizon
 
-bh=False  
-#Variable to contain the information if the object is below horizon or not
+
 if val1 < degrees(0) :
  	print("Status:  The Object is below the Horizon!")
- 	bh=True
 elif val1<10  :
 	print("Status:  The Object is just above the Horizon and may not be visible from the current location") 
 else : 
@@ -114,11 +111,4 @@ else :
  
 print ("Resultant Altitude: " + str(val1) + " degrees") 
 print ("Resultant Azimuth:  " + str(val2) + " degrees")
-#We should print the magnitude too.
-
-#Printing the list of objects above horizon currently if the object entered by the user is below Horizon
-#if bh==True :
-#	print("The following objects are above the horizon currently:")
-#	for p in planets :
-#		if 
 
