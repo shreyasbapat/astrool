@@ -6,7 +6,7 @@ place = ephem.Observer()
 place.lat = '31.7754'
 place.lon = '76.9861'
 place.elevation = 1000
-place.date = datetime.now().date().strftime('%Y/%m/%d')
+place.date = datetime.now().date().strftime('%Y/%m/%d %H:%M:%S')
 
 
 # print (datetime.now().date().strftime('%Y/%m/%d'))
@@ -70,6 +70,9 @@ objects.append(ephem.Venus())
 objects = objects + other_objects
 
 obj_req = input("Enter the name of object: ")
+if obj_req not in objects :
+	print("**Entered object is not in the databse\n**Giving details of Moon by default")
+	obj_req = "Moon"
 
 obj = ephem.FixedBody()
 
@@ -83,18 +86,38 @@ for o in objects:
 				obj.name = o.name
 				obj._ra = o.ra
 				obj._dec = o.dec
+				#obj._mag= o.mag
 	elif o.name == obj_req:
 		obj.name = o.name
 		obj._ra = o._ra
 		obj._dec = o._dec
+		#obj._mag= o.mag
 
 test_place.date = ephem.now()
 obj.compute(test_place)
 val1 = degrees(obj.alt)
 val2 = degrees(obj.az)
+val3 = obj.mag
 
-if val1 < degrees(0) : print("The Object is below the Horizon")
-if val1 < 10 : print("The Object is beyond visiblity from your location")
-print ("Resultant Altitude: " + str(val1)) 
-print ("Resultant Azimuth: " + str(val2)) 
+#Checking the status of the object, if it below or above the Horizon
+
+bh=False  
+#Variable to contain the information if the object is below horizon or not
+if val1 < degrees(0) :
+ 	print("Status:  The Object is below the Horizon!")
+ 	bh=True
+elif val1<10  :
+	print("Status:  The Object is just above the Horizon and may not be visible from the current location") 
+else : 
+    print("Status:  The Object is above the Horizon")
+ 
+print ("Resultant Altitude: " + str(val1) + " degrees") 
+print ("Resultant Azimuth:  " + str(val2) + " degrees")
+#We should print the magnitude too.
+
+#Printing the list of objects above horizon currently if the object entered by the user is below Horizon
+#if bh==True :
+#	print("The following objects are above the horizon currently:")
+#	for p in planets :
+#		if 
 
