@@ -6,10 +6,10 @@ place = ephem.Observer()
 place.lat = '31.7754'
 place.lon = '76.9861'
 place.elevation = 1000
-place.date = datetime.now().date().strftime('%Y/%m/%d %H:%M:%S')
+place.date = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
 
-
-# print (datetime.now().date().strftime('%Y/%m/%d'))
+print (place.date)
+#print (datetime.now().date().strftime('%Y/%m/%d'))
 
 test_place = place
 
