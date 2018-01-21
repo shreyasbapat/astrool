@@ -8,7 +8,7 @@ place.lon = '76.9861'
 place.elevation = 1000
 place.date = datetime.now().strftime('%Y/%m/%d %H:%M:%S')
 
-print (place.date)
+#print (place.date)
 #print (datetime.now().date().strftime('%Y/%m/%d'))
 
 test_place = place
@@ -71,7 +71,7 @@ objects = objects + other_objects
 planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
 
 obj_req = input("Enter the name of object: ")
-if obj_req not in objects + planets :
+if obj_req not in objects + planets + objects_string :
 	print("**Entered object is not in the databse\n**Giving details of Moon by default")
 	obj_req = "Moon"
 
