@@ -68,15 +68,16 @@ objects.append(ephem.Neptune())
 objects.append(ephem.Mercury())
 objects.append(ephem.Venus())
 objects = objects + other_objects
+planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
 
 obj_req = input("Enter the name of object: ")
-if obj_req not in objects :
+if obj_req not in objects + planets :
 	print("**Entered object is not in the databse\n**Giving details of Moon by default")
 	obj_req = "Moon"
 
 obj = ephem.FixedBody()
 
-planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
+
 x = iter(planets)
 for o in objects:
 	o.compute(place.date)
