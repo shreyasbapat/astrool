@@ -1,6 +1,7 @@
-import ephem
-from math import degrees
 from datetime import datetime
+from math import degrees
+
+import ephem
 
 place = ephem.Observer()
 place.lat = '31.7754'
@@ -14,12 +15,12 @@ place.date = datetime.now().strftime('%Y/%m/%d')
 test_place = place
 
 objects_string = ["Polaris", "Vega", "Deneb", "Altair", "Caph", "Schedar",
-"Scheat",  "Algenib", "Fomalhaut", "Hamal", "Aldebaran", "Atlas",
-"Capella", "Menkalinan", "Achernar", "Elnath", "Bellatrix",  "Rigel",
-"Mintaka", "Alnilam", "Betelgeuse", "Alnitak", "Saiph", "Castor", "Sirius", "Dubhe",
-"Procyon", "Pollux", "Merak", "Canopus", "Megrez", "Phecda", "Alphard", "Algieba",
-"Regulus", "Alioth", "Mizar", "Denebola", "Alcaid"
-]
+                  "Scheat",  "Algenib", "Fomalhaut", "Hamal", "Aldebaran", "Atlas",
+                  "Capella", "Menkalinan", "Achernar", "Elnath", "Bellatrix",  "Rigel",
+                  "Mintaka", "Alnilam", "Betelgeuse", "Alnitak", "Saiph", "Castor", "Sirius", "Dubhe",
+                  "Procyon", "Pollux", "Merak", "Canopus", "Megrez", "Phecda", "Alphard", "Algieba",
+                  "Regulus", "Alioth", "Mizar", "Denebola", "Alcaid"
+                  ]
 
 objects = []
 for s in objects_string:
@@ -68,47 +69,47 @@ objects.append(ephem.Neptune())
 objects.append(ephem.Mercury())
 objects.append(ephem.Venus())
 objects = objects + other_objects
-planets = ["Saturn", "Mars", "Moon", "Jupiter", "Uranus", "Neptune", "Mercury", "Venus"]
+planets = ["Saturn", "Mars", "Moon", "Jupiter",
+           "Uranus", "Neptune", "Mercury", "Venus"]
 
 obj_req = input("Enter the name of object: ")
-if obj_req not in objects + planets + objects_string :
-	print("**Entered object is not in the databse\n**Giving details of Moon by default")
-	obj_req = "Moon"
+if obj_req not in objects + planets + objects_string:
+    print("**Entered object is not in the databse\n**Giving details of Moon by default")
+    obj_req = "Moon"
 
 obj = ephem.FixedBody()
 
 
 x = iter(planets)
 for o in objects:
-	o.compute(place.date)
-	if o.name in planets :
-		for x in planets:
-			if o.name == x == obj_req :
-				obj.name = o.name
-				obj._ra = o.ra
-				obj._dec = o.dec
-			
-	elif o.name == obj_req:
-		obj.name = o.name
-		obj._ra = o._ra
-		obj._dec = o._dec
-		
+    o.compute(place.date)
+    if o.name in planets:
+        for x in planets:
+            if o.name == x == obj_req:
+                obj.name = o.name
+                obj._ra = o.ra
+                obj._dec = o.dec
+
+    elif o.name == obj_req:
+        obj.name = o.name
+        obj._ra = o._ra
+        obj._dec = o._dec
+
 
 test_place.date = ephem.now()
 obj.compute(test_place)
 val1 = degrees(obj.alt)
 val2 = degrees(obj.az)
 
-#Checking the status of the object, if it below or above the Horizon
+# Checking the status of the object, if it below or above the Horizon
 
 
-if val1 < degrees(0) :
- 	print("Status:  The Object is below the Horizon!")
-elif val1<10  :
-	print("Status:  The Object is just above the Horizon and may not be visible from the current location") 
-else : 
+if val1 < degrees(0):
+    print("Status:  The Object is below the Horizon!")
+elif val1 < 10:
+    print("Status:  The Object is just above the Horizon and may not be visible from the current location")
+else:
     print("Status:  The Object is above the Horizon")
- 
-print ("Resultant Altitude: " + str(val1) + " degrees") 
-print ("Resultant Azimuth:  " + str(val2) + " degrees")
 
+print("Resultant Altitude: " + str(val1) + " degrees")
+print("Resultant Azimuth:  " + str(val2) + " degrees")
