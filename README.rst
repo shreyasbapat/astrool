@@ -6,6 +6,16 @@ analemma plotting, conversion between position and velocity vectors and classica
 orbital elements and orbit plotting.
 It is released under the MIT license.
 
+Installation
+============
+
+Type in your teminal:
+
+    $ python3 -m pip install --index-url https://test.pypi.org/simple/ astrool
+
+And wohoo ! you just got your 0.1dev0 version of astrool!
+
+
 Requirements
 ============
 
