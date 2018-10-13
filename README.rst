@@ -9,11 +9,11 @@ It is released under the MIT license.
 Installation
 ============
 
-Type in your teminal:
+Type in your terminal::
 
-    $ python3 -m pip install --index-url https://test.pypi.org/simple/ astrool
+  $ python3 -m pip install --index-url https://test.pypi.org/simple/ astrool
 
-And wohoo ! you just got your 0.1dev0 version of astrool!
+And woohoo! You just got your 0.1dev0 version of astrool!
 
 
 Requirements
