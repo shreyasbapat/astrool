@@ -21,6 +21,7 @@ and a way to define new bodies (:py:class:`~SkyCustom` class).
 from ephem import *
 from math import radians
 
+
 class SolarMassive(object):
     """Massive Objects Class.
     """
@@ -35,7 +36,7 @@ class SolarMassive(object):
         """
         self.body_name = name
         self.body_name = self.body_name.capitalize()
-        self.objects = [Saturn(), Mars(), Moon(), Jupiter(), Uranus(), Neptune(), Mercury(), Venus(), Sun(), Pluto()]   #BoilerPlate
+        self.objects = [Saturn(), Mars(), Moon(), Jupiter(), Uranus(), Neptune(), Mercury(), Venus(), Sun(), Pluto()]   # BoilerPlate
         self._indata = False
 
     def get(self):
@@ -47,15 +48,16 @@ class SolarMassive(object):
         if not self._indata:
             raise ValueError('The body queried not present in the inbuilt database, try :py:class:`~SkyCustom` class.')
 
+
 def _convDegtoDMS(dd):
-    mnt,sec = divmod(dd*3600,60)
-    deg,mnt = divmod(mnt,60)
+    mnt, sec = divmod(dd * 3600, 60)
+    deg, mnt = divmod(mnt, 60)
     deg_val = str(int(deg)) + ":" + str(int(mnt)) + ":" + str(int(sec)) + ".0"
     return deg_val
 
+
 class SkyCustom:
-    """Class to define your own objects.
-    """
+    """Class to define your own objects."""
 
     def __init__(self, name, ra, dec):
         """Constructor.
@@ -102,7 +104,7 @@ class SkyCustom:
             Declination of the body
         name : string (optional)
         """
-        return cls(name,ra,dec)
+        return cls(name, ra, dec)
 
     def get(self):
         self.obj.name = self.name
@@ -123,13 +125,14 @@ class SkyStars:
         name : str
             Name of the star.
         """
-        self._list = ["Polaris", "Vega", "Deneb", "Altair", "Caph", "Schedar",
-                      "Scheat",  "Algenib", "Fomalhaut", "Hamal", "Aldebaran", "Atlas",
-                      "Capella", "Menkalinan", "Achernar", "Elnath", "Bellatrix",  "Rigel",
-                      "Mintaka", "Alnilam", "Betelgeuse", "Alnitak", "Saiph", "Castor", "Sirius", "Dubhe",
-                      "Procyon", "Pollux", "Merak", "Canopus", "Megrez", "Phecda", "Alphard", "Algieba",
-                      "Regulus", "Alioth", "Mizar", "Denebola", "Alcaid", "Sirrah"
-                     ]
+        self._list = [
+            "Polaris", "Vega", "Deneb", "Altair", "Caph", "Schedar", "Scheat",
+            "Algenib", "Fomalhaut", "Hamal", "Aldebaran", "Atlas", "Capella",
+            "Menkalinan", "Achernar", "Elnath", "Bellatrix", "Rigel", "Mintaka",
+            "Alnilam", "Betelgeuse", "Alnitak", "Saiph", "Castor", "Sirius", "Dubhe",
+            "Procyon", "Pollux", "Merak", "Canopus", "Megrez", "Phecda", "Alphard",
+            "Algieba", "Regulus", "Alioth", "Mizar", "Denebola", "Alcaid", "Sirrah"
+        ]
         self.body_name = name
         self._indata = False
         self.body_name = self.body_name.capitalize()
